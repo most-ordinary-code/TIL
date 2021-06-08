@@ -153,5 +153,77 @@ $ git log --oneline #커밋 목록 한 줄로 보기
 489f62c (HEAD -> master) first commit
 ```
 
+---
+
+### 추가 커밋 쌓기
+
+- a.txt 내용 수정
+
+```bash
+$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   a.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        b.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+```
+
+```bash
+$ git add a.txt
+
+$ git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   a.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        b.txt
+```
+
+```bash
+$ git commit -m "second commit"
+[master 283cf6a] second commit
+ 1 file changed, 1 insertion(+)
+```
+
+```bash
+$ git log --oneline
+283cf6a (HEAD -> master) second commit
+489f62c first commit
+```
+
+- b.txt 커밋 만들기
+
+```bash
+$ git add b.txt
+
+$ git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   b.txt
+
+$ git commit -m "add b.txt"
+[master 70bd8a4] add b.txt
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 b.txt
+```
+
+```bash
+$ git log --oneline
+7c1581a (HEAD -> master) add b.txt
+283cf6a second commit
+489f62c first commit
+```
+
 
 
